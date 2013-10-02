@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title></title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <!-- external CSS link -->
+      <link rel="stylesheet" href="css/normalize.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+      
+  </head>
+  <body onclick="navCells()">
+
+  	<div id="bgOverlay">
+
+  	<div id="outerContainer">
+
+    <div id="start" onclick="hidePopup();">START</div>
+
+    <div id="container" class="container">
+
+      <div class="rows" onclick="playBox()">
+        <div class="box" id="cell1_1"></div>
+        <div class="box" id="cell2_1"></div>
+        <div class="box" id="cell3_1"></div>
+      </div>
+      <div class="rows" onclick="playBox()">
+        <div class="box" id="cell1_2"></div>
+        <div class="box" id="cell2_2"></div>
+        <div class="box" id="cell3_2"></div>
+      </div>
+      <div class="rows" onclick="playBox()">
+        <div class="box" id="cell1_3"></div>
+        <div class="box" id="cell2_3"></div>
+        <div class="box "id="cell3_3"></div>
+      </div>
+        
+      <div id="plyMsg" class="playMessage">
+        <h3>X Won!</h3>
+      </br>
+        <input type="button" id="playAgain" value="Play Again!">
+      </div>
+
+      <div id="plyMsg2" class="playMessage">
+        <h3>O Won!</h3>
+      </br>
+        <input type="button" id="playAgain" value="Play Again!">
+      </div>
+
+  </div>
+</div>
+
+</div>
+
+
+  <script type="text/javascript" src="../scripts/controllers/main.js"></script>
+  </body>
+
+</html>
