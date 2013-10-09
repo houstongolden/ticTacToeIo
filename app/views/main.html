@@ -1,22 +1,22 @@
-<div id="start" ng-click="showDetails = ! showDetails" ng-hide="showDetails">START</div>
+<div id="start" ng-click="showDetails = !showDetails" ng-hide="showDetails">START</div>
 
 <div id="container" ng-controller="MainCtrl" ng-show="showDetails">
 
 	<div ng-repeat="row in ticTacToe track by $index">   <!-- rows -->
-	  <div ng-class="{box:true,topLine:$parent.$index != 0,leftLine:$index != 0}" ng-repeat="cell in row track by $index" ng-click="clickBox(cell);"></div>  <!-- individual cells -->
+	  <div ng-class="{box:true,topLine:$parent.$index != 0,leftLine:$index != 0}" ng-repeat="cell in row track by $index" ng-click="clickBox(cell)">{{cell.value}}</div>  <!-- individual cells -->
 	  
 	  <div class="clearfix"></div>
 
-	<div id="plyMsg" class="playMessage" ng-show="showWin">
+	<div id="plyMsg" class="playMessage" ng-show="xWin">
       <h3>X Won!</h3>
     </br>
-      <input type="button" id="playAgain" value="Play Again!" ng-click="resetGame()" ng-hide="">
+      <button id="playAgain" ng-click="resetGame()">Play Again!</button>
     </div>
 
-    <div id="plyMsg2" class="playMessage" ng-show="showWin2">
+    <div id="plyMsg2" class="playMessage" ng-show="yWin">
       <h3>O Won!</h3>
     </br>
-      <input type="button" id="playAgain" value="Play Again!" ng-click="resetGame()" ng-hide="">
+      <button id="playAgain" ng-click="resetGame()">Play Again!</button>
     </div>  
     <!-- win  messages show after ng show is true -->
 

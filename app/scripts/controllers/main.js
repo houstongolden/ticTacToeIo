@@ -3,21 +3,9 @@
 angular.module('newTicApp')
   .controller('MainCtrl', function ($scope) {
 
- //  	$scope.ticTacToe = [];
-	// var sideLength = 3;
-
-	// 	for(rw=0; rw < sideLength; ++rw) {
-	// 		var myNewArray = [];
-			
-	// 		$scope.ticTacToe.push( myNewArray );
-	// 		for(col=0; col < sideLength; ++col) {
-	// 			myNewArray.push( {val:"", r:rw, c:col} );
-	// 		}
-	// };
-
-  	$scope.ticTacToe = [[{value:"", r:0, c:0},{value:"", r:0, c:1},{value:"", r:0, c:2}],
-  						[{value:"", r:1, c:0},{value:"", r:1, c:1},{value:"", r:1, c:2}],
-  						[{value:"", r:2, c:0},{value:"", r:2, c:1},{value:"", r:2, c:2}]];
+  	$scope.ticTacToe = [[{value:""},{value:""},{value:""}],
+  						[{value:""},{value:""},{value:""}],
+  						[{value:""},{value:""},{value:""}]];
 
 	var turnNum = 0;
 
@@ -36,7 +24,7 @@ angular.module('newTicApp')
 		// alternates turns
 
 		cell.value = letter;
-		event.target.innerHTML = letter;
+		// event.target.innerHTML = letter;
 
 		++turnNum;
 		if(turnNum == 9)
@@ -45,7 +33,7 @@ angular.module('newTicApp')
 		$scope.wins(cell);
 
 	}
-
+	// win conditions
 	$scope.wins = function() {
 
 		for(var x=0; x<=2; ++x) {
@@ -53,17 +41,17 @@ angular.module('newTicApp')
 			$scope.ticTacToe[1][x].value == $scope.ticTacToe[2][x].value &&
 			$scope.ticTacToe[0][x].value != "") {
 			if($scope.ticTacToe[0][x].value == "X")
-				$scope.showWin = true;
+				$scope.xWin = true;
 			else
-				$scope.showWin2 = true;
+				$scope.yWin = true;
 			}
 		if($scope.ticTacToe[x][0].value == $scope.ticTacToe[x][1].value &&
 			$scope.ticTacToe[x][1].value == $scope.ticTacToe[x][2].value &&
 			$scope.ticTacToe[x][0].value != "") {
 			if($scope.ticTacToe[x][0].value == "X")
-				$scope.showWin = true;
+				$scope.xWin = true;
 			else
-				$scope.showWin2 = true;
+				$scope.yWin = true;
 			}
 		
 		// if($scope.ticTacToe[0][x].value == $scope.ticTacToe[1][x+1].value &&
@@ -84,49 +72,18 @@ angular.module('newTicApp')
 		// 		alert("O Wins");
 		// 	}
 		}
-	};
+	}
 
-	$scope.resetGame = function(cell) {
+	// resets game
+	$scope.resetGame = function() {
+		var tic = $scope.ticTacToe;
 
-		for(var r in cell.value){
-			for(var c in cell[r].value) {
-				cell[r][c].value = "";
-			}
-		}
-	};
-
-		// for(r=0; r<$scope.ticTacToe.length; r++)
-		// 	winTest == 0;
-		// 	for(c=0; c<$scope.ticTacToe.length; c++)
-
-		// 		switch(this.ticTacToe[r][c]) {
-		// 		case "X":
-		// 			++winTest;
-		// 			break;
-		// 		case "O":
-		// 			--winTest;
-		// 			break;
-		// 		}
-
-		// if(math.abs(this.ticTacToe[row][column]) == 3)
-		// 	alert("Winner");
-
-		
-		// for(r=0; r<$scope.ticTacToe.length; r++)
-		// 	winTest == 0;
-		// 	for(c=0; c<$scope.ticTacToe.length; c++)
-
-		// 		switch(this.ticTacToe[c][r]) {
-		// 		case "X":
-		// 			++winTest;
-		// 			break;
-		// 		case "O":
-		// 			--winTest;
-		// 			break;
-		// 		}
-
-		// if(math.abs(this.ticTacToe[row][column]) == 3)
-		// 	alert("Winner");
-
-	 //  };
+		for(var r in tic)
+			for(var c in tic[r]) 
+				tic[r][c].value = '';
+		turnNum = 0;
+		$scope.xWin = false;
+		$scope.yWin = false;
+		$scope.showDetails = false;
+	}
 });
