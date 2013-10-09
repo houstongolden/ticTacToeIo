@@ -24,7 +24,6 @@ angular.module('newTicApp')
 		// alternates turns
 
 		cell.value = letter;
-		// event.target.innerHTML = letter;
 
 		++turnNum;
 		if(turnNum == 9)
