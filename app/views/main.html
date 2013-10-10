@@ -2,7 +2,7 @@
 
 <div id="container" ng-show="showDetails">
 
-	<div ng-repeat="row in ticTacToe track by $index">   <!-- rows -->
+	<div ng-repeat="row in room.ticTacToe">   <!-- rows -->
 	  <div ng-class="{box:true,topLine:$parent.$index != 0,leftLine:$index != 0}" ng-repeat="cell in row track by $index" ng-click="clickBox(cell)">{{cell.value}}</div>  <!-- individual cells -->
 	  
 	  <div class="clearfix"></div>
