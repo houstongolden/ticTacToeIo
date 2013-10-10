@@ -6,22 +6,42 @@ angular.module('newTicApp')
   	// calls to firebase
   	var database = new Firebase("https://fire-base-tictactoe.firebaseio.com/room/");
   	$scope.room={};
+  	var promise = angularFire(database, $scope, "room"); // room is whatever you're binding
+
+  	// var myDataRef = new Firebase("https://fire-base-tictactoe.firebaseio.com/queue/");
+  	// myDataRef.transaction(function(current_value) {
+  	// 	return current_value + 1;
+  	// })
+  	// angularFire(myDataRef, $scope, "queue", []).then(function() {
+  	// 	if($scope.queue != {})
+
+
+  	// });
+  	// $scope.queue={};
+  	// ref.remove look up documentation
   	// promise delays response to firebase
-  	var promise = angularFire(database, $scope, "room");
+  	// var promise = angularFire(database, $scope, "queue");
+  	// if($scope.queue != {})
+  	// 	join game
+  	// 	i am player2
+  	// else
+  	// 	create game
+  	// 	i am player1
 
   	promise.then(function(){
   		$scope.room={
   			ticTacToe: [[{value:""},{value:""},{value:""}],
   						[{value:""},{value:""},{value:""}],
   						[{value:""},{value:""},{value:""}]],
-			turnNum: 0,
+  			// gameWon: false;
 			// players: [player1, player2]
 			// player1: Math.floor(Math.random()*1001),
 			// player2: Math.floor(Math.random()*1001),
 			// if(player1 == player2) {
 			// 	player2 + 1;
 			// }
-			};
+			turnNum: 0,
+		};
 
 		$scope.clickBox = function(cell) {
 
@@ -47,6 +67,21 @@ angular.module('newTicApp')
 
 			// for convenience
 			var tic = $scope.room.ticTacToe;
+
+			// win possibilities
+			// var winz=[[[0,0] [0,1], [0,2]],[[1,0], [1,2], [1,3]],[[2,0], [2,1], [2,2]],
+			// 		  [[0,0] [1,0], [2,0]],[[0,1], [1,1], [2,1]],[[0,2], [1,2], [2,2]],
+			// 		  [[0,0] [0,1], [0,2]],[[1,0], [1,2], [1,3]];
+
+			// for(var i = 0; i < winz.length; ++i)
+			// if ((tic[winz[i][0].value] == tic[winz[i][1].value]) && 
+			// 	(tic[winz[i][1].value] == tic[winz[i][2].value]) &&
+			// 	(tic[winz[i][0].value] != "")) {
+			// 	if(tic[winz[i][0].value] == "X")
+			// 		$scope.xWin = true;
+			// 	else
+			// 		$scope.yWin = true;
+			// }
 
 			for(var x=0; x<=2; ++x) {
 			if(tic[0][x].value == tic[1][x].value &&
@@ -83,27 +118,8 @@ angular.module('newTicApp')
 					$scope.xWin = true;
 				else
 					$scope.yWin = true;
-				}
-			// if($scope.ticTacToe[0][x].value == $scope.ticTacToe[1][x+1].value &&
-			// 	$scope.ticTacToe[1][x+1].value == $scope.ticTacToe[2][x+2].value &&
-			// 	$scope.ticTacToe[0][x].value != "") {
-			// 	if($scope.ticTacToe[0][x].value == "X")
-			// 		alert("X Wins");
-			// 	else
-			// 		alert("O Wins");
-			// 	}
-			// 	console.log(x);
-			// if($scope.ticTacToe[0][x].value == $scope.ticTacToe[1][x-1].value &&
-			// 	$scope.ticTacToe[1][x-1].value == $scope.ticTacToe[2][x-2].value &&
-			// 	$scope.ticTacToe[0][x].value != "") {
-			// 	if($scope.ticTacToe[0][x].value == "X")
-			// 		alert("X Wins");
-			// 	else
-			// 		alert("O Wins");
-			// 	}
-		
+				}		
 		}
-
 		// resets game
 		$scope.resetGame = function() {
 			var tic = $scope.room.ticTacToe;
