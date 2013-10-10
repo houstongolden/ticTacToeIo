@@ -45,24 +45,45 @@ angular.module('newTicApp')
 		// win conditions
 		$scope.wins = function() {
 
+			// for convenience
+			var tic = $scope.room.ticTacToe;
+
 			for(var x=0; x<=2; ++x) {
-			if($scope.room.ticTacToe[0][x].value == $scope.room.ticTacToe[1][x].value &&
-				$scope.room.ticTacToe[1][x].value == $scope.room.ticTacToe[2][x].value &&
-				$scope.room.ticTacToe[0][x].value != "") {
-				if($scope.room.ticTacToe[0][x].value == "X")
+			if(tic[0][x].value == tic[1][x].value &&
+				tic[1][x].value == tic[2][x].value &&
+				tic[0][x].value != "") {
+				if(tic[0][x].value == "X")
 					$scope.xWin = true;
 				else
 					$scope.yWin = true;
 				}
-			if($scope.room.ticTacToe[x][0].value == $scope.room.ticTacToe[x][1].value &&
-				$scope.room.ticTacToe[x][1].value == $scope.room.ticTacToe[x][2].value &&
-				$scope.room.ticTacToe[x][0].value != "") {
-				if($scope.room.ticTacToe[x][0].value == "X")
+			if(tic[x][0].value == tic[x][1].value &&
+				tic[x][1].value == tic[x][2].value &&
+				tic[x][0].value != "") {
+				if(tic[x][0].value == "X")
+					$scope.xWin = true;
+				else
+					$scope.yWin = true;
+				}
+			};
+
+			if(tic[0][0].value == tic[1][1].value &&
+				tic[1][1].value == tic[2][2].value &&
+				tic[0][0].value != "") {
+				if(tic[0][0].value == "X")
 					$scope.xWin = true;
 				else
 					$scope.yWin = true;
 				}
 			
+			if(tic[2][0].value == tic[1][1].value &&
+				tic[1][1].value == tic[0][2].value &&
+				tic[0][2].value != "") {
+				if(tic[0][2].value == "X")
+					$scope.xWin = true;
+				else
+					$scope.yWin = true;
+				}
 			// if($scope.ticTacToe[0][x].value == $scope.ticTacToe[1][x+1].value &&
 			// 	$scope.ticTacToe[1][x+1].value == $scope.ticTacToe[2][x+2].value &&
 			// 	$scope.ticTacToe[0][x].value != "") {
@@ -80,7 +101,7 @@ angular.module('newTicApp')
 			// 	else
 			// 		alert("O Wins");
 			// 	}
-			}
+		
 		}
 
 		// resets game
