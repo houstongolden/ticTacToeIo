@@ -38,7 +38,6 @@ angular.module('newTicApp')
 	          console.log($scope.player)
 	          // read game id from queue
 	          $scope.gameId = $scope.queue.gameId;
-	          // $scope.games[$scope.gameId].turn = "p2";
 	          //clear the queue
 	          $scope.queue = {};
 	          }
@@ -171,6 +170,9 @@ angular.module('newTicApp')
 			$scope.yWin = false;
 			$scope.showDetails = false;
 		};
-//http://tic-tac-bro.herokuapp.com/#/
 
+		// $scope.yourTurn = function() {
+		// 	if()
+		// }
+//http://tic-tac-bro.herokuapp.com/#/
 });
