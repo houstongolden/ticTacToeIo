@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('newTicApp')
-  .controller('MainCtrl', ['$scope', 'angularFire', function ($scope, angularFire) {
+  .controller('MainCtrl', function ($scope, angularFire) {
 	// bind to firebase
   	$scope.games = [];
     $scope.queue = {};
@@ -10,41 +10,57 @@ angular.module('newTicApp')
     $scope.player = "";
     $scope.gameId = -1;
 
-  	var database = new Firebase("https://fire-base-tictactoe.firebaseio.com/games/");
-  	angularFire(database, $scope, "games").then(function(){
+  	var games = new Firebase("https://fire-base-tictactoe.firebaseio.com/games/");
+  	angularFire(games, $scope, "games").then(function (){
 
-  		var queueRef = new Firebase("https://game-logic-tehpeh.firebaseio.com/queue");
-      angularFire(queueRef, $scope, "queue").then(function() {
-	      if($scope.queue.gameId == undefined) {
-          $scope.player = "p1";
-          console.log($scope.player);
-          // create game
-          var newGame = {
-            ticTacToe: [[{value:""},{value:""},{value:""}],
-  						[{value:""},{value:""},{value:""}],
-  						[{value:""},{value:""},{value:""}]],
-            turn: "p1",
-            // gameOver: false,
-            turnNum: 0,
-          };
+	  	var queue = new Firebase("https://fire-base-tictactoe.firebaseio.com/games/queue/");
+	      angularFire(queue, $scope, "queue").then(function (){
+		      if($scope.queue.gameId == undefined) {
+		          $scope.player = "p1";
+		          console.log($scope.player);
+		          // create game
+		          var newGame = {
+		            ticTacToe: [[{value:""},{value:""},{value:""}],
+		  						[{value:""},{value:""},{value:""}],
+		  						[{value:""},{value:""},{value:""}]],
+		            turn: "p1",
+		            gameOver: false,
+		            turnNum: 0,
+		          };
+		          // add game id to queue
+		          $scope.gameId = $scope.games.push(newGame) - 1;  // the - 1 matches the index of the array since arrays start at 0g
+		          $scope.queue.gameId = $scope.gameId;
 
-          $scope.gameId = $scope.games.push(newGame) - 1;  // the - 1 matches the index of the array since arrays start at 0g
-          $scope.queue.gameId = $scope.gameId;
-
-          // add game id to queue
-          }
-        else {
-          $scope.player = "p2";
-          console.log($scope.player)
-          // read game id from queue
-          $scope.gameId = $scope.queue.gameId;
-          $scope.games[$scope.gameId].turn = "p2";
-          //clear the queue
-          $scope.queue = {};
-          }
+		          
+	          }
+	        else {
+	          $scope.player = "p2";
+	          console.log($scope.player)
+	          // read game id from queue
+	          $scope.gameId = $scope.queue.gameId;
+	          // $scope.games[$scope.gameId].turn = "p2";
+	          //clear the queue
+	          $scope.queue = {};
+	          }
+			});
 		});
-	});
 
+		// $scope.$watch('games.gameOver', function(){ 
+  //   		console.log("I'm watching game_ended before the if");
+  //   		if($scope.games[$scope.gameId].gameOver){
+	 //        console.log("I'm going to display the win message");
+	 //        $scope.xWin = true;
+	 //        $scope.yWin = true;
+	 //        // $scope.showNotification = false;
+	 //        // $scope.showEndNotification = true;
+	        
+	 //        console.log("I displayed the win message");
+
+	 //    	console.log($scope.games[$scope.gameId].gameOver+ "awesome!");
+	 //      }
+
+	 //    });
+		
 		$scope.clickBox = function(cell) {
 
 			if($scope.player == $scope.games[$scope.gameId].turn) {
@@ -69,14 +85,12 @@ angular.module('newTicApp')
 			      }  else {
 			        $scope.games[$scope.gameId].turn = 'p1';
 			      }
-			}
+			};
 
 			$scope.wins(cell);
 
 			// add play limitation
-			
-
-		}
+		};
 		// win conditions
 		$scope.wins = function() {
 
@@ -101,40 +115,50 @@ angular.module('newTicApp')
 			for(var x=0; x<=2; ++x) {
 			if(tic[0][x].value == tic[1][x].value &&
 				tic[1][x].value == tic[2][x].value &&
-				tic[0][x].value != "") {
+				tic[0][x].value != "") 
+				 {
 				if(tic[0][x].value == "X")
 					$scope.xWin = true;
+				
 				else
 					$scope.yWin = true;
+				
 				}
 			if(tic[x][0].value == tic[x][1].value &&
 				tic[x][1].value == tic[x][2].value &&
-				tic[x][0].value != "") {
+				tic[x][0].value != "") 
+				 {
 				if(tic[x][0].value == "X")
 					$scope.xWin = true;
+				
 				else
 					$scope.yWin = true;
+				
 				}
 			};
 
 			if(tic[0][0].value == tic[1][1].value &&
 				tic[1][1].value == tic[2][2].value &&
-				tic[0][0].value != "") {
+				tic[0][0].value != "") 
+				 {
 				if(tic[0][0].value == "X")
 					$scope.xWin = true;
+				
 				else
 					$scope.yWin = true;
+
 				}
 			
 			if(tic[2][0].value == tic[1][1].value &&
 				tic[1][1].value == tic[0][2].value &&
-				tic[0][2].value != "") {
+				tic[0][2].value != "")
+				 {
 				if(tic[0][2].value == "X")
 					$scope.xWin = true;
 				else
 					$scope.yWin = true;
 				}		
-		}
+		};
 		// resets game
 		$scope.resetGame = function() {
 			var tic = $scope.games[$scope.gameId].ticTacToe;
@@ -146,6 +170,7 @@ angular.module('newTicApp')
 			$scope.xWin = false;
 			$scope.yWin = false;
 			$scope.showDetails = false;
-		}
+		};
+//http://tic-tac-bro.herokuapp.com/#/
 
-}]);
+});
