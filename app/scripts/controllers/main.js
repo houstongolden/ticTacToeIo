@@ -10,10 +10,10 @@ angular.module('newTicApp')
     $scope.player = "";
     $scope.gameId = -1;
 
-  	var games = new Firebase("https://fire-base-tictactoe.firebaseio.com/games/");
+  	var games = new Firebase("https://tictactoeio.firebaseio.com/games/");
   	angularFire(games, $scope, "games").then(function (){
 
-	  	var queue = new Firebase("https://fire-base-tictactoe.firebaseio.com/games/queue/");
+	  	var queue = new Firebase("https://tictactoeio.firebaseio.com/games/queue/");
 	      angularFire(queue, $scope, "queue").then(function (){
 		      if($scope.queue.gameId == undefined) {
 		          $scope.player = "p1";
@@ -44,21 +44,6 @@ angular.module('newTicApp')
 			});
 		});
 
-		// $scope.$watch('games.gameOver', function(){ 
-  //   		console.log("I'm watching game_ended before the if");
-  //   		if($scope.games[$scope.gameId].gameOver){
-	 //        console.log("I'm going to display the win message");
-	 //        $scope.xWin = true;
-	 //        $scope.yWin = true;
-	 //        // $scope.showNotification = false;
-	 //        // $scope.showEndNotification = true;
-	        
-	 //        console.log("I displayed the win message");
-
-	 //    	console.log($scope.games[$scope.gameId].gameOver+ "awesome!");
-	 //      }
-
-	 //    });
 		
 		$scope.clickBox = function(cell) {
 
@@ -96,20 +81,7 @@ angular.module('newTicApp')
 			// for convenience
 			var tic = $scope.games[$scope.gameId].ticTacToe;
 
-			// win possibilities
-			// var winz=[[[0,0] [0,1], [0,2]],[[1,0], [1,2], [1,3]],[[2,0], [2,1], [2,2]],
-			// 		  [[0,0] [1,0], [2,0]],[[0,1], [1,1], [2,1]],[[0,2], [1,2], [2,2]],
-			// 		  [[0,0] [0,1], [0,2]],[[1,0], [1,2], [1,3]];
 
-			// for(var i = 0; i < winz.length; ++i)
-			// if ((tic[winz[i][0].value] == tic[winz[i][1].value]) && 
-			// 	(tic[winz[i][1].value] == tic[winz[i][2].value]) &&
-			// 	(tic[winz[i][0].value] != "")) {
-			// 	if(tic[winz[i][0].value] == "X")
-			// 		$scope.xWin = true;
-			// 	else
-			// 		$scope.yWin = true;
-			// }
 
 			for(var x=0; x<=2; ++x) {
 			if(tic[0][x].value == tic[1][x].value &&
@@ -171,8 +143,4 @@ angular.module('newTicApp')
 			$scope.showDetails = false;
 		};
 
-		// $scope.yourTurn = function() {
-		// 	if()
-		// }
-//http://tic-tac-bro.herokuapp.com/#/
 });
