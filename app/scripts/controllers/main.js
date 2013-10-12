@@ -26,13 +26,20 @@ angular.module('newTicApp')
 		            turn: "p1",
 		            gameOver: false,
 		            turnNum: 0,
+		            waiting: true
 		          };
+		       
 		          // add game id to queue
 		          $scope.gameId = $scope.games.push(newGame) - 1;  // the - 1 matches the index of the array since arrays start at 0g
 		          $scope.queue.gameId = $scope.gameId;
 
+
+
+		   
 		          
 	          }
+
+
 	        else {
 	          $scope.player = "p2";
 	          console.log($scope.player)
@@ -40,6 +47,7 @@ angular.module('newTicApp')
 	          $scope.gameId = $scope.queue.gameId;
 	          //clear the queue
 	          $scope.queue = {};
+	          $scope.games[$scope.gameId].waiting = false;
 	          }
 			});
 		});

@@ -103,6 +103,19 @@ body {
     background: url(http://www.ewallpapers.eu/w_show/purple-and-blue-minimal-1920-1080-6599.jpg);
 }
 
+#waiting {
+    width: 150px;
+    height: 150px;
+    transition: .5s;
+    font-family: 'Monoton';
+    color: #AEEE00;
+    font-size: 150px;
+    text-align: center;
+    line-height: 150px;
+    float: right;
+    z-index: 1;
+}
+
 #container {
     width: 460px;
     height: 460px;
