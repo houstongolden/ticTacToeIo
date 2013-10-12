@@ -1,6 +1,19 @@
+<div id="headerBox">
+  <div id="nav">
+      <ul>
+        <li><a href="#top"><img src="http://cloud-media.com/wp-content/uploads/2013/09/TicTacToe-GUI-Home-beta.png" /></a></li>
+        <li><a href="#level1"><img src="http://cloud-media.com/wp-content/uploads/2013/09/TicTacToe-GUI-Play-beta.png" /> <!-- Play --></a></li>
+        <li><a href="#" ng-click="reset()"><img src="http://cloud-media.com/wp-content/uploads/2013/09/TicTacToe-GUI-Rematch-beta.png" /><!-- Rematch --></a></li>
+        <li><a href="#" ng-click="levelUp()"><img src="http://cloud-media.com/wp-content/uploads/2013/09/TicTacToe-GUI-Levels-beta.png" /><!-- Levels --></a>
+        <li><a href=""><img src="http://cloud-media.com/wp-content/uploads/2013/09/TicTacToe-GUI-Friends-beta.png" /><!-- Friends --></a></li>
+      </ul>
+  </div>
+</div>
+
 <div id="start" ng-click="showDetails = !showDetails" ng-hide="showDetails">START</div>
 
 <div id="container" ng-show="showDetails">
+
 
 	<div ng-repeat="row in games[gameId].ticTacToe">   <!-- rows -->
 	  <div ng-class="{box:true,topLine:$parent.$index != 0,leftLine:$index != 0}" ng-repeat="cell in row" ng-click="clickBox(cell)">{{cell.value}}</div>  <!-- individual cells -->
@@ -18,11 +31,52 @@
     </br>
       <button id="playAgain" ng-click="resetGame()">Play Again!</button>
     </div>  
+
     <!-- win  messages show after ng show is true -->
 </div>
 
+    <!--  begin loading div -->
+
   <div id="waiting" ng-show="games[gameId].waiting">
-    Waiting on your opponent... 
+    <br />
+     Finding your opponent... 
+  </div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+ <br />
+<br />
+<br />
+<br />
+<hr> 
+<a id="cloudmedia" href="http://www.cloud-media.com"><img src="http://cloud-media.com/wp-content/uploads/2013/06/Cloud-Media-New-beta5-logo-300x66.png" /> <!-- Home --></a>
+<br />
+<br />
+
+
+</div>
+
+
+
+
   </div>
 
 </div>

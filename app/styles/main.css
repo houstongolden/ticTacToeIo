@@ -97,6 +97,81 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+
+
+#headerBox {
+/*  background-color: black;*/
+  position: fixed-top;
+  width: 100%;
+  height: 80px;
+  margin-top: -5px;
+  z-index: 5;
+}
+
+
+#nav {
+  width: 1000px;
+  height: 80px;
+  position: relative; 
+  display: inline-block;
+  text-align: center;
+  z-index: 5; 
+  margin: 0px 10px 55px -75px;
+
+}
+
+
+#nav ul li {
+  display: inline-block;
+  text-align: center;
+  font-size: 25px;
+  font-family: 'Monoton';
+  padding: 0 5px 0 10px;
+  margin: -10px 5px 0;
+ 
+}
+
+
+#header ul {
+        margin:0 auto;
+        width:800px;
+        padding:12px;
+    list-style: none;
+}
+
+#header li {
+  float: left;
+  text-align: center;
+  font-size: 30px;
+  font-family: Trebuchet;
+}
+
+#header a {
+    padding:0 14px;
+    text-align:center;
+    display:block;
+    font-size: 30px;
+    font-family: Trebuchet;    
+}    
+    
+#header ul li a.logo {
+    background: url("http://cloud-media.com/wp-content/uploads/2013/09/Tic-Tac-Toe-io-beta-logo-1.png");
+    background-repeat:no-repeat;
+    height:120px;
+    width:800px;
+    padding: 0px;
+    margin-top: -35px;
+}
+
+#headerbox {
+  width: 750px;
+  height: auto;
+  margin: 20px 50px 5px auto;
+  position: relative;
+}
+
+
+
 body {
     margin: 10px auto;
     width: 900px;
@@ -104,22 +179,29 @@ body {
 }
 
 #waiting {
-    width: 500px;
-    height: 500px;
+    width: 460px;
+    height: 250px;
     transition: .5s;
     font-family: 'Monoton';
     color: #AEEE00;
-    font-size: 50px;
+    font-size: 45px;
     text-align: center;
     float: left;
     z-index: 1;
+    background: url(http://www.ajaxload.info/cache/FF/FF/FF/00/00/00/8-1.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    margin-top: -40px;
+
 }
 
 #container {
     width: 460px;
     height: 460px;
-    margin: 10px auto;
+    margin: 0 auto;
     opacity: .7;
+    margin-top: 30px;
     /*box-shadow: 0px 3px 9px  #888888;*/
 }
 
@@ -184,6 +266,13 @@ body {
     bottom: 100px;
     width: 100px;
     height: 30px;
+}
+
+
+#cloudmedia {
+    text-align: center;
+    margin-left: 75px;
+
 }
 
 /* ==========================================================================
@@ -324,6 +413,7 @@ body {
 
     a[href]:after {
         content: " (" attr(href) ")";
+        text-align: center;
     }
 
     abbr[title]:after {
