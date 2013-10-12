@@ -32,10 +32,6 @@ angular.module('newTicApp')
 		          // add game id to queue
 		          $scope.gameId = $scope.games.push(newGame) - 1;  // the - 1 matches the index of the array since arrays start at 0g
 		          $scope.queue.gameId = $scope.gameId;
-
-
-
-		   
 		          
 	          }
 

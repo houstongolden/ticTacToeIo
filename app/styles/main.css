@@ -104,15 +104,14 @@ body {
 }
 
 #waiting {
-    width: 150px;
-    height: 150px;
+    width: 500px;
+    height: 500px;
     transition: .5s;
     font-family: 'Monoton';
     color: #AEEE00;
-    font-size: 150px;
+    font-size: 50px;
     text-align: center;
-    line-height: 150px;
-    float: right;
+    float: left;
     z-index: 1;
 }
 
